@@ -2,7 +2,7 @@ var fs = require('fs'),
     xml2js = require('xml2js');
 
 var parser = new xml2js.Parser();
-var builder = new xml2js.Builder({rootName: "wpt", headless: true});
+var builder = new xml2js.Builder({rootName: "wpt", headless: true, renderOpts: { 'pretty': false, 'indent': ' ', 'newline': '\n' }});
 builder.rootName = "wpt";
 
 fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
@@ -17,8 +17,7 @@ fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
 <extensions>
 <time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2018-01-07T15:09:35.573Z</time>
 </extensions>
-</metadata>"
-`;
+</metadata>"`;
         for (var i = 0; i < waypoints.length; i++) {
           var waypoint = waypoints[i];
 
