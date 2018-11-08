@@ -5,7 +5,7 @@ var parser = new xml2js.Parser();
 var builder = new xml2js.Builder({rootName: "wpt", headless: true});
 builder.rootName = "wpt";
 
-fs.readFile(__dirname + '/waypoints.gpx', function(err, data) {
+fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
     parser.parseString(data, function (err, result) {
         let waypoints = result.gpx.wpt;
         var waypointsOut = `<?xml version="1.0" encoding="UTF-8"?>
@@ -31,7 +31,7 @@ fs.readFile(__dirname + '/waypoints.gpx', function(err, data) {
 
         waypointsOut += "</gpx>"
 
-        fs.writeFile(__dirname + "/out", waypointsOut, function(err) {
+        fs.writeFile(__dirname + "/" + process.argv[3], waypointsOut, function(err) {
           if(err) {
             return console.log(err);
           }
