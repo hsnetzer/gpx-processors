@@ -19,5 +19,5 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "xml2js": "^0.4.19"
-  }3
+  }
 }
