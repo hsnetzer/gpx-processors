@@ -8,7 +8,6 @@ builder.rootName = "wpt";
 fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
     parser.parseString(data, function (err, result) {
         let waypoints = result.gpx.wpt;
-        let tracks = result.gpx.trk;
         console.dir(tracks);
 
         var waypointsOut = `<?xml version="1.0" encoding="UTF-8"?>
@@ -31,9 +30,6 @@ fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
           waypointsOut += xml;
         }
 
-        var xml = builder.buildObject(tracks);
-
-        waypointsOut += xml;
         waypointsOut += "</gpx>";
 
         fs.writeFile(__dirname + "/" + process.argv[3], waypointsOut, function(err) {
