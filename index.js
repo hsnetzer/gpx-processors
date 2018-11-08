@@ -2,7 +2,7 @@ var fs = require('fs'),
     xml2js = require('xml2js');
 
 var parser = new xml2js.Parser();
-var builder = new xml2js.Builder({rootName: "wpt", headless: true, renderOpts: { 'pretty': false, 'indent': ' ', 'newline': '\n' }});
+var builder = new xml2js.Builder({rootName: "wpt", headless: true, renderOpts: { 'pretty': true, 'indent': '', 'newline': '\n' }});
 builder.rootName = "wpt";
 
 fs.readFile(__dirname + '/' + process.argv[2], function(err, data) {
